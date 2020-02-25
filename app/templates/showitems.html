@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <!-- <table>
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Name</th>
+                <th>Size</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in value %}
+            <tr>
+                <th>{{row[0]}}</th>
+                <th>{{row[1]}}</th>
+                <th>{{row[2]}}</th>
+                <th>{{row[3]}}</th>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table> -->
+    {{table}}
+
+    <p>Total today = {{totaltoday}}</p>
+    <form action="" method='dialog'>
+        <p>
+            <button>Clean</button>
+        </p>
+    </form>
+{% endblock %}

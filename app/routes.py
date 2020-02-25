@@ -40,13 +40,13 @@ def save_changes(item,form, new=False):
 
     db.session.commit()
 
-def clear_data(session):
+def clear_data():
     meta = db.metadata
     for table in reversed(meta.sorted_tables):
-        session.execute(table.delete())
-    session.commit()
+        db.session.execute(table.delete())
+    db.session.commit()
 
-@app.route('/showitems')
+@app.route('/showitems', methods=['GET','POST'])
 def showitems():
     items=[]
     #items_string=AddForm.data
@@ -58,8 +58,8 @@ def showitems():
     for i in items:
         if i.day == date.today():
             totaltoday+=i.price
-    if request.method == 'DIALOG':
-        clear_data(items)
+    if request.method == 'POST':
+        clear_data()
         flash('Cleaned!')
         return redirect('/index')
     return render_template('showitems.html',table=table,totaltoday=totaltoday)
